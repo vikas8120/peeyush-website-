@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Gunjan Digital Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Added FontAwesome -->
+    <style>
+        /* Calendar Styles (Custom for Vanilla JS implementation) */
+        .calendar-container {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--primary-gold);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+
+        .calendar-day-header {
+            color: #888;
+            font-size: 0.9rem;
+            padding: 5px;
+        }
+
+        .calendar-day {
+            padding: 10px;
+            background: #111;
+            border-radius: 4px;
+            color: #ddd;
+            min-height: 40px;
+            position: relative;
+        }
+
+        .view-section {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Gunjan Digital Studio" class="logo-img">
+            </div>
+            <div class="nav-item active" onclick="switchSection('dashboard-view', this)">
+                <i class="fas fa-home"></i> Dashboard
+            </div>
+            <div class="nav-item" onclick="switchSection('bookings-view', this)">
+                <i class="fas fa-calendar-alt"></i> Bookings
+            </div>
+            <div class="nav-item" onclick="switchSection('users-view', this)">
+                <i class="fas fa-users"></i> Users
+            </div>
+            <div class="nav-item" onclick="switchSection('settings-view', this)">
+                <i class="fas fa-cog"></i> Settings
+            </div>
+            <div class="nav-item" style="margin-top: auto; color: #ff4444;" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Admin Dashboard</h1>
+                <div class="user-info">Welcome, Admin</div>
+            </header>
+
+            <!-- Dashboard View -->
+            <div id="dashboard-view" class="view-section" style="display: block;">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Bookings</div>
+                        <div class="stat-value">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Total Enquiries</div>
+                        <div class="stat-value" id="totalEnquiries">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Pending Requests</div>
+                        <div class="stat-value">0</div>
+                    </div>
+                </div>
+
+                <div class="content-section" style="margin-top: 2rem;">
+                    <h3>Recent Enquiries</h3>
+                    <div id="enquiries-list" style="margin-top: 1rem;">
+                        <p style="color: #888;">Loading enquiries...</p>
+                    </div>
+                </div>
+
+                <div class="content-section" style="margin-top: 2rem;">
+                    <h3>Recent Bookings</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Customer</th>
+                                <th>Service</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dashboardBookingsTable">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bookings View -->
+            <div id="bookings-view" class="view-section">
+                <h2>All Bookings</h2>
+                <div class="content-section">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Customer</th>
+                                <th>Service</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsTableFull">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Users View -->
+            <div id="users-view" class="view-section">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2rem;">
+                    <h2>User Management</h2>
+                    <span style="color:#aaa; font-size:14px;"><i class="fas fa-info-circle"></i> Registered Accounts</span>
+                </div>
+                <div class="content-section">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name / Username</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Joined Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersList">
+                            <tr><td colspan="5" style="text-align:center;">Loading users...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Settings View -->
+            <div id="settings-view" class="view-section">
+                <h2>Admin Settings</h2>
+                <div class="content-section" style="max-width: 600px;">
+                    <div style="background: rgba(26,26,26,0.5); padding: 20px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.2);">
+                        <h3 style="color:#D4AF37; margin-bottom:15px;"><i class="fas fa-lock"></i> Security</h3>
+                        <form id="adminSettingsForm" onsubmit="event.preventDefault(); alert('Settings saved successfully!');">
+                            <div style="margin-bottom: 15px;">
+                                <label style="display:block; color:#aaa; margin-bottom:5px; font-size:13px;">Update Admin Email</label>
+                                <input type="email" value="admin@gunjan.com" style="width:100%; padding:10px; background:#111; border:1px solid #333; color:white; border-radius:4px;">
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label style="display:block; color:#aaa; margin-bottom:5px; font-size:13px;">New Password</label>
+                                <input type="password" placeholder="Leave blank to keep unchanged" style="width:100%; padding:10px; background:#111; border:1px solid #333; color:white; border-radius:4px;">
+                            </div>
+                            <button type="submit" style="background:#D4AF37; color:black; padding:10px 20px; border:none; border-radius:4px; font-weight:bold; cursor:pointer;">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // Check Auth
+        const token = localStorage.getItem('token');
+        if (!token) window.location.href = '/admin/login.html';
+
+        // Sidebar Navigation
+        function switchSection(sectionId, element) {
+            // Update Sidebar
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            if (element) element.classList.add('active');
+
+            // Toggle Classes
+            document.querySelectorAll('.view-section').forEach(el => el.style.display = 'none');
+            const target = document.getElementById(sectionId);
+            if (target) target.style.display = 'block';
+
+            // Fetch specific data based on section
+            if (sectionId === 'bookings-view') fetchBookings();
+            if (sectionId === 'dashboard-view') fetchStats();
+            if (sectionId === 'users-view') fetchUsers();
+        }
+
+        async function fetchStats() {
+            try {
+                // Bookings Fetch (for stats)
+                const res = await fetch('/api/bookings', {
+                    headers: { 'Authorization': token }
+                });
+                const bookings = await res.json();
+
+                // Update Stats
+                const statVals = document.querySelectorAll('.stat-value');
+                if (statVals[0]) statVals[0].innerText = bookings.length;
+                if (statVals[2]) statVals[2].innerText = bookings.filter(b => !b.paid).length; // Pending bookings count
+
+                // Recent Enquiries
+                const enquiriesList = document.getElementById('enquiries-list');
+                if (enquiriesList) {
+                    const contactRes = await fetch('/api/admin/contacts', {
+                        headers: { 'Authorization': token }
+                    });
+                    if (contactRes.ok) {
+                        const contacts = await contactRes.json();
+                        // Update Enquiries Stat
+                        if (statVals[1]) statVals[1].innerText = contacts.length;
+
+                        if (contacts.length === 0) {
+                            enquiriesList.innerHTML = '<p style="color:#aaa;">No enquiries found.</p>';
+                        } else {
+                            // Show only last 3 enquiries on dashboard
+                            const recentContacts = contacts.slice(0, 3);
+                            enquiriesList.innerHTML = recentContacts.map(d => `
+                                <div style="background: rgba(255,255,255,0.05); padding: 15px; margin-bottom: 15px; border-left: 4px solid #D4AF37; border-radius: 4px;">
+                                    <div style="display:flex; justify-content:space-between; margin-bottom: 5px;">
+                                        <h4 style="color:white; margin:0;">${d.name}</h4>
+                                        <span style="font-size:12px; color:#aaa;">${new Date(d.createdAt).toLocaleDateString()}</span>
+                                    </div>
+                                    <p style="margin:2px 0; color:#ccc; font-size: 0.9rem;">${d.phone}</p>
+                                    <p style="margin-top:8px; font-style:italic; color:#bbb; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px;">"${d.message}"</p>
+                                </div>
+                            `).join('');
+                        }
+                    }
+                }
+
+                // Dashboard Recent Bookings (Last 5)
+                const dashboardTable = document.getElementById('dashboardBookingsTable');
+                if (dashboardTable && bookings.length > 0) {
+                    dashboardTable.innerHTML = bookings.slice(0, 5).map(b => `
+                            <tr>
+                                <td>${b._id.substr(-6)}</td>
+                                <td>${b.name}<br><small style="color:#888;">${b.phone}</small></td>
+                                <td>${b.shootType || 'N/A'}</td>
+                                <td>${b.date || 'TBD'}</td>
+                                <td>
+                                    <span style="padding: 3px 8px; border-radius: 12px; font-size: 11px; background: ${b.paid ? 'rgba(76,175,80,0.1)' : 'rgba(255,152,0,0.1)'}; color: ${b.paid ? '#81c784' : '#ffb74d'}">
+                                        ${b.paid ? 'Paid' : 'Pending'}
+                                    </span>
+                                </td>
+                                <td>
+                                    ${b.paymentScreenshot ? `<a href="${b.paymentScreenshot}" target="_blank" style="color:#D4AF37; text-decoration:none; display:inline-block; margin-right:10px;"><i class="fas fa-image"></i> Proof</a>` : ''}
+                                    ${!b.paid ? `<button onclick="approveBooking('${b._id}')" style="background:#4caf50; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;"><i class="fas fa-check"></i> Approve</button>` : ''}
+                                </td>
+                            </tr>
+                         `).join('');
+                } else if (dashboardTable) {
+                    dashboardTable.innerHTML = '<tr><td colspan="6" style="text-align:center;">No recent bookings found</td></tr>';
+                }
+
+            } catch (e) {
+                console.error(e);
+                if (e.status === 403) logout();
+            }
+        }
+
+        async function fetchBookings() {
+            const bookingsTableFull = document.getElementById('bookingsTableFull');
+            if (bookingsTableFull) {
+                bookingsTableFull.innerHTML = '<tr><td colspan="6" style="text-align:center;">Loading...</td></tr>';
+                try {
+                    const res = await fetch('/api/bookings', {
+                        headers: { 'Authorization': token }
+                    });
+                    if (!res.ok) throw new Error('Auth failed');
+                    const bookings = await res.json();
+                    if (bookings.length > 0) {
+                        bookingsTableFull.innerHTML = bookings.map(b => `
+                            <tr>
+                                <td>${b._id.substr(-6)}</td>
+                                <td>${b.name}<br><small style="color:#888;">${b.phone}</small></td>
+                                <td>${b.shootType || 'N/A'}</td>
+                                <td>${b.date || 'TBD'}</td>
+                                <td>
+                                    <span style="padding: 3px 8px; border-radius: 12px; font-size: 11px; background: ${b.paid ? 'rgba(76,175,80,0.1)' : 'rgba(255,152,0,0.1)'}; color: ${b.paid ? '#81c784' : '#ffb74d'}">
+                                        ${b.paid ? 'Paid' : 'Pending'}
+                                    </span>
+                                </td>
+                                <td>
+                                    ${b.paymentScreenshot ? `<a href="${b.paymentScreenshot}" target="_blank" title="View SS" style="color:#D4AF37; margin-right:10px;"><i class="fas fa-image"></i></a>` : ''}
+                                    <a href="/api/bookings/${b._id}/invoice" target="_blank" title="Download Invoice" style="color:#ccc;"><i class="fas fa-file-invoice"></i></a>
+                                    ${!b.paid ? `<button onclick="approveBooking('${b._id}')" style="background:#4caf50; color:white; border:none; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer; margin-left:10px;">Approve</button>` : ''}
+                                </td>
+                            </tr>
+                         `).join('');
+                    } else {
+                        bookingsTableFull.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 20px;">No bookings found</td></tr>';
+                    }
+                } catch (e) { 
+                    console.error(e); 
+                    if(e.message === 'Auth failed') logout();
+                }
+            }
+        }
+
+        async function fetchUsers() {
+            const usersList = document.getElementById('usersList');
+            if (usersList) {
+                usersList.innerHTML = '<tr><td colspan="5" style="text-align:center;">Loading users...</td></tr>';
+                try {
+                    const res = await fetch('/api/admin/users', {
+                        headers: { 'Authorization': token }
+                    });
+                    if(res.ok) {
+                        const users = await res.json();
+                        if (users.length > 0) {
+                            usersList.innerHTML = users.map(u => `
+                                <tr>
+                                    <td style="font-weight:500; color:#fff;">${u.username}</td>
+                                    <td>${u.email}</td>
+                                    <td>${u.phone || 'N/A'}</td>
+                                    <td>${new Date(u.createdAt).toLocaleDateString()}</td>
+                                    <td>
+                                        <button style="background:rgba(255,0,0,0.1); color:#ff4444; border:1px solid rgba(255,0,0,0.2); padding:4px 8px; border-radius:4px; cursor:pointer;" onclick="alert('Delete functionality coming soon')"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            `).join('');
+                        } else {
+                            usersList.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:20px;">No registered users found.</td></tr>';
+                        }
+                    } else {
+                        usersList.innerHTML = '<tr><td colspan="5" style="text-align:center; color:red;">Failed to load users.</td></tr>';
+                    }
+                } catch(e) { console.error(e); }
+            }
+        }
+
+        async function approveBooking(id) {
+            if (!confirm('Mark this booking as Paid?')) return;
+            try {
+                const res = await fetch(`/api/bookings/${id}/approve`, {
+                    method: 'PATCH',
+                    headers: { 'Authorization': token }
+                });
+                if (res.ok) {
+                    alert('Booking Approved!');
+                    fetchStats();
+                    fetchBookings();
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = '/admin/login.html';
+        }
+
+        // Init
+        fetchStats();
+    </script>
+</body>
+</html>

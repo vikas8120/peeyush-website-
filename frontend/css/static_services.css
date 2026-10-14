@@ -1,0 +1,72 @@
+/* Static Services Cards (Add-ons) */
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.services .service-card {
+    background: #111;
+    /* dark premium look */
+    color: #fff;
+    padding: 20px;
+    width: 280px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+    transition: none;
+    /* disable hover effects */
+    border: none;
+}
+
+.service-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.services .service-card:hover {
+    transform: none;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+}
+
+.services .service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.services .service-card p {
+    margin: 5px 0;
+}
+
+.services .price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 15px 0;
+    color: #ffd700;
+    /* gold color for price */
+}
+
+.book-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #ffd700;
+    /* golden color box */
+    color: #111;
+    font-weight: bold;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: none;
+    /* remove hover zoom */
+}
+
+.book-btn:hover {
+    background: #ffcc00;
+    /* slightly brighter on hover */
+    transform: none;
+    /* disable hover scaling */
+}

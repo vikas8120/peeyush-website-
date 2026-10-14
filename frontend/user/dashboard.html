@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Studio Account | Gunjan Digital Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #D4AF37; /* Luxury Gold */
+            --bg-dark: #050505;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: radial-gradient(circle at 50% 0%, #1a1500 0%, #050505 50%);
+            background-attachment: fixed;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .navbar .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .logo:hover .logo-img {
+            transform: scale(1.03);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .dashboard-container {
+            max-width: 1100px;
+            margin: 120px auto 50px;
+            padding: 0 20px;
+        }
+
+        /* Welcome Banner */
+        .welcome-banner {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0,0,0,0.8));
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #000;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .welcome-text h1 {
+            margin: 0 0 5px 0;
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+
+        .welcome-text p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Grid Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 800px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            color: var(--primary);
+            margin-top: 0;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        /* Bookings List */
+        .booking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .booking-item {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .booking-item:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .booking-info h4 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .booking-info p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .status-pending {
+            background: rgba(255, 152, 0, 0.15);
+            color: #ffb74d;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+
+        .status-confirmed {
+            background: rgba(76, 175, 80, 0.15);
+            color: #81c784;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+        }
+        
+        .empty-state i {
+            font-size: 40px;
+            color: rgba(212, 175, 55, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .btn-gold {
+            background: var(--primary);
+            color: black;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .btn-gold:hover {
+            box-shadow: 0 0 15px rgba(212,175,55,0.5);
+        }
+
+        /* Profile Details */
+        .profile-stat {
+            margin-bottom: 20px;
+        }
+        .profile-stat label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .profile-stat div {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo"><img src="../assets/logo.png" alt="Gunjan Digital Studio" class="logo-img"></a>
+        <ul class="nav-links">
+            <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Banner Profile -->
+        <div class="welcome-banner">
+            <div class="avatar" id="userAvatar">U</div>
+            <div class="welcome-text">
+                <h1 id="welcomeText">Welcome, Guest</h1>
+                <p>Welcome to your personal studio portal.</p>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Left Side: Bookings -->
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-camera-retro"></i> My Upcoming Shoots</h3>
+                <div class="booking-list" id="bookingList">
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-times"></i>
+                        <p>No bookings found yet.</p>
+                        <a href="/#services" class="btn-gold">Explore Services</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Account Details -->
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-user"></i> Account Details</h3>
+                <div class="profile-stat">
+                    <label>Full Name</label>
+                    <div id="pName">Loading...</div>
+                </div>
+                <div class="profile-stat">
+                    <label>Email Address</label>
+                    <div id="pEmail">-</div>
+                </div>
+                <div class="profile-stat">
+                    <label>Phone Number</label>
+                    <div id="pPhone">-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check Authentication strictly
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/customer-login.html';
+        }
+
+        // Decode JWT manually (Client Side parsing)
+        function parseJwt(token) {
+            try { 
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                return JSON.parse(decodeURIComponent(window.atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join('')));
+            } catch (e) { return null; }
+        }
+
+        const user = parseJwt(token);
+
+        // Populate Interface with Professional Branding
+        if (user) {
+            const userName = user.username || 'Client';
+            document.getElementById('welcomeText').textContent = `Welcome, ${userName}`;
+            document.getElementById('pName').textContent = userName;
+            document.getElementById('userAvatar').textContent = userName.charAt(0).toUpperCase();
+
+            // Setup mock API fetch for bookings 
+            fetchMyBookings(user.username);
+        }
+
+        async function fetchMyBookings(username) {
+            try {
+                // To display user's bookings, we could point to a protected API
+                // For demonstration, we simply query standard bookings and manually filter (or mock)
+                const res = await fetch(`/api/bookings`, {
+                    headers: { 'Authorization': token }
+                });
+                
+                if (res.ok) {
+                    const allBookings = await res.json();
+                    const myBookings = allBookings.filter(b => b.name && b.name.toLowerCase() === username.toLowerCase());
+                    
+                    const listEl = document.getElementById('bookingList');
+                    if (myBookings.length > 0) {
+                        listEl.innerHTML = myBookings.map(b => `
+                            <div class="booking-item">
+                                <div class="booking-info">
+                                    <h4>${b.shootType || 'Premium Shoot'}</h4>
+                                    <p><i class="far fa-calendar-alt"></i> ${b.date || 'TBD'} &nbsp;|&nbsp; <i class="fas fa-rupee-sign"></i> ${b.amount || 'Pending'}</p>
+                                </div>
+                                <div>
+                                    <span class="status-badge ${b.paid ? 'status-confirmed' : 'status-pending'}">
+                                        ${b.paid ? 'Confirmed' : 'Pending'}
+                                    </span>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            } catch(e) {
+                console.error("Failed to fetch bookings", e);
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

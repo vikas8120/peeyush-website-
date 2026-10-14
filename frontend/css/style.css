@@ -1,0 +1,1160 @@
+/* ===== SUPER LUXURY GLOBAL THEME ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap');
+
+/* ===== GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #050505;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 7vw;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+nav .logo img {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.45));
+}
+
+nav ul {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+}
+
+nav ul li a {
+  font-weight: 600;
+  padding: 6px 10px;
+  transition: .3s;
+}
+
+nav ul li a:hover {
+  color: #ffd700;
+}
+
+/* ----- Hero Video ----- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.hero .logo {
+  text-align: center;
+  z-index: 2;
+}
+
+.hero .logo img {
+  width: 180px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #fff;
+}
+
+/* ----- Services Grid ----- */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.serviceCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.serviceCard:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.serviceCard img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  height: 180px;
+  /* Keep height consistency */
+  object-fit: cover;
+}
+
+.serviceCard h3 {
+  margin: 10px 0;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.serviceCard p {
+  opacity: .8;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.serviceCard select,
+.serviceCard input {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  display: block;
+  /* Ensure block layout */
+}
+
+/* ===== LUXURY BUTTON ===== */
+.luxBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  font-weight: 900;
+  letter-spacing: .6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 0 22px rgba(255, 255, 255, 0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+  color: #fff;
+  cursor: pointer;
+}
+
+.luxBtn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.14);
+}
+
+/* ===== SERVICES SECTION ===== */
+.section {
+  padding: 90px 7vw;
+}
+
+.title {
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.sub {
+  margin-bottom: 28px;
+  margin-top: 10px;
+  opacity: .78;
+  max-width: 780px;
+  line-height: 1.7;
+}
+
+.gridLux {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+
+/* GLASS CARDS */
+.glassCard {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 26px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.70);
+  overflow: hidden;
+  position: relative;
+  transition: transform .35s ease, box-shadow .35s ease, border .35s ease;
+}
+
+.glassCard::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: linear-gradient(120deg, transparent 40%, rgba(255, 255, 255, 0.14), transparent 60%);
+  transform: rotate(25deg);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.glassCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.12), 0 35px 120px rgba(0, 0, 0, 0.85);
+}
+
+.glassCard:hover::before {
+  opacity: 1;
+}
+
+.iconLux {
+  width: 66px;
+  height: 66px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.10);
+  margin-bottom: 12px;
+}
+
+.iconLux img {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
+}
+
+.badgeLux {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  opacity: .95;
+  color: #fff;
+}
+
+.cardBody {
+  padding: 22px;
+}
+
+.cardBody h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.cardBody p {
+  margin-top: 6px;
+  opacity: .80;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #fff;
+}
+
+.lineLux {
+  margin-top: 16px;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+}
+
+.bottomLux {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.priceLux {
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* ===== PORTFOLIO LIGHTBOX ===== */
+.portfolioGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.portfolioItem {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 22px;
+  transition: transform .35s ease;
+  height: 250px;
+}
+
+.portfolioItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+
+.portfolioItem:hover img {
+  transform: scale(1.08);
+}
+
+.portfolioOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity .35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolioItem:hover .portfolioOverlay {
+  opacity: 1;
+}
+
+.portfolioOverlay i {
+  font-size: 32px;
+  color: #fff;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+  padding: 80px 7vw;
+}
+
+.testimonialCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 22px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  transition: transform .35s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.testimonialCard:hover {
+  transform: translateY(-8px);
+}
+
+.testimonialCard p {
+  opacity: .78;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.testimonialCard h4 {
+  margin-top: 12px;
+  font-weight: 900;
+}
+
+/* ===== CONTACT ===== */
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 500px;
+}
+
+/* Luxury Input & Select */
+.contactForm input,
+.contactForm textarea,
+.contactForm select {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  resize: none;
+  font-family: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contactForm select option {
+  background: #000;
+  color: #fff;
+}
+
+.contactForm button {
+  width: 160px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.04));
+  color: #fff;
+  font-weight: 900;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  transition: transform .25s ease;
+}
+
+.contactForm button:hover {
+  transform: scale(1.05);
+}
+
+/* ===== FLOATING WHATSAPP ===== */
+.whatsFloat {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 64px;
+  height: 64px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  transition: transform .25s ease;
+}
+
+.whatsFloat:hover {
+  transform: scale(1.08);
+}
+
+.whatsFloat img {
+  width: 34px;
+  height: 34px;
+}
+
+/* MOBILE */
+@media(max-width:768px) {
+  .heroName {
+    font-size: 34px;
+  }
+
+  .heroLogoGlow {
+    width: 120px;
+    height: 120px;
+    border-radius: 34px;
+  }
+
+  .heroLogo {
+    width: 82px;
+    height: 82px;
+  }
+
+  nav ul {
+    display: none;
+  }
+}
+
+/* ===== RE-ADDED HELPERS FOR LIGHTBOX & VIDEO ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+}
+
+.videoPopup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+}
+
+.videoBox {
+  width: 90vw;
+  max-width: 800px;
+}
+
+.videoBox video {
+  width: 100%;
+}
+
+.filter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 18px 0 22px;
+}
+
+.filter button {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.filter button.active,
+.filter button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.footer {
+  text-align: center;
+  padding: 40px;
+  opacity: .5;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: transparent;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Smooth + premium */
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Luxury background glow */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.10), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.06), transparent 55%),
+    radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.05), transparent 55%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Section spacing */
+.section {
+  padding: 90px 7vw;
+}
+
+/* Headings premium */
+.title {
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
+}
+
+.sub {
+  margin-top: 10px;
+  opacity: .78;
+  max-width: 780px;
+  line-height: 1.7;
+}
+
+/* Premium glass card */
+.glassCard {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 26px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.70);
+  overflow: hidden;
+  position: relative;
+  transition: transform .35s ease, box-shadow .35s ease, border .35s ease;
+}
+
+.glassCard::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: linear-gradient(120deg, transparent 40%, rgba(255, 255, 255, 0.14), transparent 60%);
+  transform: rotate(25deg);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.glassCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.12), 0 35px 120px rgba(0, 0, 0, 0.85);
+}
+
+.glassCard:hover::before {
+  opacity: 1;
+}
+
+/* Luxury button */
+.luxBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  font-weight: 900;
+  letter-spacing: .6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 0 22px rgba(255, 255, 255, 0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+  color: #fff;
+  cursor: pointer;
+}
+
+.luxBtn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.14);
+}
+
+/* Premium grid */
+.gridLux {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+
+/* Icon bubble premium */
+.iconLux {
+  width: 66px;
+  height: 66px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.10);
+  margin-bottom: 12px;
+}
+
+.iconLux img {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
+}
+
+/* Premium badge */
+.badgeLux {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  opacity: .95;
+  color: #fff;
+}
+
+/* Card text */
+.cardBody {
+  padding: 22px;
+}
+
+.cardBody h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.cardBody p {
+  margin-top: 6px;
+  opacity: .80;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #fff;
+}
+
+.lineLux {
+  margin-top: 16px;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+}
+
+/* Price + book */
+.bottomLux {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.priceLux {
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* ===== FLOATING COLORFUL WHATSAPP ===== */
+.whatsFloat {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border: 2px solid #fff;
+  box-shadow: 0 0 20px #25D366, 0 0 40px #128C7E, 0 0 60px #25D366;
+  animation: glow 1.8s infinite alternate;
+  transition: transform .25s ease;
+}
+
+.whatsFloat:hover {
+  transform: scale(1.12);
+}
+
+.whatsFloat img {
+  width: 36px;
+  height: 36px;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px #25D366, 0 0 40px #128C7E, 0 0 60px #25D366;
+  }
+
+  50% {
+    box-shadow: 0 0 30px #25D366, 0 0 50px #128C7E, 0 0 80px #25D366;
+  }
+
+  100% {
+    box-shadow: 0 0 20px #25D366, 0 0 40px #128C7E, 0 0 60px #25D366;
+  }
+}
+
+.contactForm input,
+.contactForm select,
+.contactForm button {
+  margin-top: 12px;
+}
+
+.contactForm button {
+  cursor: pointer;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border: 1px solid #fff;
+  font-weight: 900;
+  transition: transform .25s ease;
+}
+
+.contactForm button:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   PRESERVED FUNCTIONAL STYLES + HERO & NAVBAR
+   ========================================= */
+
+/* Keeping Hero & Navbar as they were largely compatible or specific, 
+   but checking if I should map them. 
+   The User CSS removed specific Hero styles. 
+   I will RE-ADD basic Hero styling to ensure content doesn't break,
+   inheriting the new 'Luxury' feel where possible.
+*/
+
+/* ===== SUPER LUXURY HERO ===== */
+.heroLux {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.heroVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0);
+  will-change: transform;
+  filter: brightness(.55) contrast(1.1);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.75));
+  backdrop-filter: blur(2px);
+}
+
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 0 20px;
+  max-width: 900px;
+}
+
+/* Logo glow */
+.heroLogoGlow {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 18px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  box-shadow: 0 0 45px rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.heroLogo {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.25));
+}
+
+/* Name */
+.heroName {
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.10);
+}
+
+/* Tagline */
+.heroTag {
+  margin-top: 10px;
+  opacity: .85;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Buttons row */
+.heroBtns {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Mobile */
+@media(max-width:768px) {
+  .heroName {
+    font-size: 34px;
+  }
+
+  .heroLogoGlow {
+    width: 120px;
+    height: 120px;
+    border-radius: 34px;
+  }
+
+  .heroLogo {
+    width: 82px;
+    height: 82px;
+  }
+}
+
+/* Navbar */
+.topTools {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  z-index: 100;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.brandMini {
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.toolsMenu {
+  display: flex;
+  gap: 20px;
+}
+
+.topIcons {
+  display: flex;
+  gap: 15px;
+}
+
+.topIcons img {
+  width: 24px;
+  opacity: .8;
+  transition: .3s;
+}
+
+.topIcons img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Functional Components (Lightbox, etc) */
+
+.filter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 18px 0 22px;
+}
+
+.filter button {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.filter button.active,
+.filter button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+.item {
+  height: 250px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .4s;
+}
+
+.item:hover img {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+}
+
+.videoPopup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3001;
+}
+
+.videoBox {
+  width: 90vw;
+  max-width: 800px;
+}
+
+.videoBox video {
+  width: 100%;
+}
+
+/* ===== FLOATING SOCIAL MEDIA BAR ===== */
+.socialFloat {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 9999;
+}
+
+.socialFloat a {
+  display: flex;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+  transition: transform .25s, box-shadow .25s;
+}
+
+.socialFloat a img {
+  width: 28px;
+  height: 28px;
+}
+
+.socialFloat a:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 28px #fffa, 0 0 45px #fff4, 0 0 65px #fff8;
+}
+
+.footer {
+  text-align: center;
+  padding: 40px;
+  opacity: .5;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile */
+@media(max-width:900px) {
+  .toolsMenu {
+    display: none;
+  }
+
+  #heroLogo {
+    font-size: 12vw;
+  }
+}
+
+/* FULL WEBSITE VIDEO BACKGROUND */
+.bgVideoWrap {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+}
+
+.bgVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.45) contrast(1.15);
+}
+
+.bgOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.85));
+}
+
+#sendEmailBtn:focus,
+#sendEmailBtn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.serviceCard .bookBtn {
+  width: 100% !important;
+  margin-top: 12px !important;
+  padding: 14px 18px !important;
+  border: none !important;
+  border-radius: 18px !important;
+  cursor: pointer !important;
+  font-weight: 900 !important;
+  font-size: 16px !important;
+  letter-spacing: 1px !important;
+  color: #000 !important;
+
+  background: linear-gradient(135deg, #FFD700, #FFF3A6) !important;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.35) !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.serviceCard .bookBtn:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.55) !important;
+}

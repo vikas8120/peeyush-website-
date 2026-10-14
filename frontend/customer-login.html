@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login - Gunjan Digital Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #050505;
+            color: #D4AF37;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+            width: 320px;
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: transparent;
+            border: 1px solid #D4AF37;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #D4AF37;
+            color: black;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #b5952f;
+        }
+
+        .toggle-link {
+            display: block;
+            margin-top: 15px;
+            color: #ccc;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+        <h2 id="title">Customer Login</h2>
+        <form id="authForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <div id="extraFields" style="display: none;">
+                <input type="text" id="phone" placeholder="Phone Number">
+                <input type="email" id="email" placeholder="Email Address">
+            </div>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" id="submitBtn">Login</button>
+        </form>
+        <p class="error" id="errorMsg"></p>
+        <a class="toggle-link" id="toggleMode">New user? Register here</a>
+        <a class="toggle-link" id="forgotPass" style="margin-top: 10px;">Forgot Password?</a>
+        <a class="toggle-link" href="/" style="margin-top: 10px; text-decoration: none; color: #D4AF37;">&larr; Back to
+            Home</a>
+    </div>
+
+    <script>
+        const authForm = document.getElementById('authForm');
+        const errorMsg = document.getElementById('errorMsg');
+        const toggleMode = document.getElementById('toggleMode');
+        const title = document.getElementById('title');
+        const submitBtn = document.getElementById('submitBtn');
+        const extraFields = document.getElementById('extraFields');
+        let isLogin = true;
+
+        toggleMode.addEventListener('click', () => {
+            isLogin = !isLogin;
+            if (isLogin) {
+                title.textContent = 'Login';
+                submitBtn.textContent = 'Login';
+                toggleMode.textContent = 'New user? Register here';
+                extraFields.style.display = 'none';
+            } else {
+                title.textContent = 'Create Account';
+                submitBtn.textContent = 'Register';
+                toggleMode.textContent = 'Already have an account? Login';
+                extraFields.style.display = 'block';
+            }
+            errorMsg.textContent = '';
+        });
+
+        authForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (isLogin) {
+                // Try Admin Login First
+                try {
+                    const adminRes = await fetch('/api/admin/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: username, password })
+                    });
+                    const adminData = await adminRes.json();
+                    if (adminData.token) {
+                        localStorage.setItem('token', adminData.token);
+                        window.location.href = '/admin/dashboard.html';
+                        return;
+                    }
+                } catch (err) {}
+
+                // Try User Login (Fallback, even if backend route not ready yet)
+                try {
+                    const res = await fetch('/api/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, password, userType: 'user' })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        localStorage.setItem('token', data.token);
+                        window.location.href = '/user/dashboard.html';
+                    } else {
+                        errorMsg.textContent = "Invalid Credentials";
+                    }
+                } catch (err) {
+                    errorMsg.textContent = "Invalid Credentials";
+                }
+            } else {
+                // Registration API
+                const phone = document.getElementById('phone').value;
+                const email = document.getElementById('email').value;
+                try {
+                    const res = await fetch('/api/register', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, password, phone, email, userType: 'user' })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        alert('Registration successful! Please login.');
+                        toggleMode.click();
+                    } else {
+                        errorMsg.textContent = data.error || "Error registering";
+                    }
+                } catch (err) {
+                    errorMsg.textContent = "Server error. Try again.";
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Gunjan Digital Studio</title>
+    <meta name="description" content="Discover the legacy of Gunjan Digital Studio, the premier luxury photography and cinematic film studio in Gwalior. Led by Mahesh Pal." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .about-hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, rgba(5, 5, 5, 1) 70%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .about-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 48px;
+            color: #D4AF37;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .about-hero p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .about-content-section {
+            padding: 80px 0;
+            background: #050505;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        .about-img-wrap {
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 12px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.01);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+        }
+        .about-img-wrap img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+        .about-text h2 {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .about-text h2 span {
+            color: #D4AF37;
+        }
+        .about-text p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .value-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            transition: 0.3s;
+        }
+        .value-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-5px);
+        }
+        .value-card i {
+            color: #D4AF37;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .value-card h3 {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .value-card p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.6;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-wrap">
+            <a href="/" class="logo" target="_blank">
+                <img src="assets/logo.png" alt="Gunjan Digital Studio" class="logo-img" />
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="/#home" target="_blank">Home</a>
+                <a href="/#services" target="_blank">Services</a>
+                <a href="/#gallery" target="_blank">Portfolio</a>
+                <a href="/#pricing" target="_blank">Pricing</a>
+                <a href="/#reviews" target="_blank">Reviews</a>
+                <a href="/#contact" target="_blank">Contact</a>
+                <a href="/about.html" target="_blank" class="active" style="color: #D4AF37; font-weight: 600;">About Us</a>
+            </div>
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 15px;">
+                <a href="/customer-login.html" target="_blank" title="Login" style="font-size: 20px; color: #fff; text-decoration: none;">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+                <a href="/#booking" target="_blank" class="btn-book-now" style="padding: 8px 16px; border: 1px solid #D4AF37; border-radius: 12px; color: #D4AF37; font-weight: 600; text-decoration: none; font-size: 13px; transition: 0.3s; background: transparent;">Book Now</a>
+                <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="about-hero">
+        <div class="container">
+            <h1>ABOUT OUR STUDIO</h1>
+            <p>Capturing your raw emotions, luxury celebrations, and timeless stories in Gwalior and beyond.</p>
+        </div>
+    </header>
+
+    <!-- Story Section -->
+    <section class="about-content-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img-wrap">
+                    <img src="assets/WEDDING/P2677683.JPG" alt="Mahesh Pal Photography" loading="lazy" />
+                </div>
+                <div class="about-text">
+                    <h2>THE LEGACY OF <span>MAHESH PAL</span></h2>
+                    <p>
+                        Gunjan Digital Studio is Gwalior's premier photography and cinematic film studio. 
+                        Founded and led by lead photographer Mahesh Pal, our studio has spent over a decade documenting 
+                        the most beautiful wedding stories, bridal profiles, baby shoots, and portrait portfolios in Madhya Pradesh.
+                    </p>
+                    <p>
+                        We believe that luxury photography is not just about expensive lenses—it is about timing, lighting, 
+                        and understanding the soul of the moment. We blend state-of-the-art camera equipment, high-end 
+                        drones, and meticulous manual retouching to deliver images that tell a story.
+                    </p>
+                    <div style="margin-top: 30px;">
+                        <a href="/#booking" target="_blank" class="btn btn-gold">BOOK A SHOOT NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values / Features Section -->
+    <section class="about-content-section" style="background: #0a0a0a; border-top: 1px solid rgba(212,175,55,0.05);">
+        <div class="container">
+            <div class="section-head text-center" style="margin-bottom: 50px;">
+                <h2>OUR STUDIO VALUES</h2>
+                <p>What makes Gunjan Digital Studio Gwalior's most trusted photography team.</p>
+            </div>
+            <div class="grid-3">
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Passion & Detail</h3>
+                    <p>We treat every photoshoot like a masterpiece. No details, smiles, or glances go unnoticed.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Luxury Aesthetics</h3>
+                    <p>Our custom color grading, high-finish albums, and premium editing deliver a truly cinematic look.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Privacy & Security</h3>
+                    <p>Your personal photos and video files are safe with us. We maintain a strict policy of confidentiality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Column 1: Logo & Branding + Badges + Social Follow -->
+                <div class="footer-col-brand">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="Gunjan Digital Studio" class="logo-img-footer" loading="lazy">
+                    </div>
+                    <p class="brand-desc">
+                        Your trusted local partner for capturing lifetime memories, royal weddings, cinematic stories, and luxury portfolio shoots in Gwalior and Central India.
+                    </p>
+                    
+                    <div class="footer-badges">
+                        <div class="footer-badge-item">
+                            <span class="badge-icon"><i class="fas fa-star"></i></span>
+                            <div class="badge-text">
+                                <strong>4.9/5 Rating</strong>
+                                <span>1000+ Reviews</span>
+                            </div>
+                        </div>
+                        <div class="footer-badge-item">
+                            <span class="badge-icon"><i class="fas fa-award"></i></span>
+                            <div class="badge-text">
+                                <strong>Trusted Studio</strong>
+                                <span>Verified Reviews</span>
+                            </div>
+                        </div>
+                        <div class="footer-badge-item">
+                            <span class="badge-icon"><i class="fas fa-camera"></i></span>
+                            <div class="badge-text">
+                                <strong>10+ Years</strong>
+                                <span>Trusted Service</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="follow-along">
+                        <h4>FOLLOW ALONG</h4>
+                        <div class="social-luxury">
+                            <a href="https://www.facebook.com/share/18EEqt9ar6/" target="_blank" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/p/DUX3ZUliXvq/?igsh=eHY1MTR2aXFhdW9n" target="_blank" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://youtube.com/@gunjandigitalstudio-b9t?si=sk8bWQhRpHemCuht" target="_blank" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://wa.me/919669036747" target="_blank" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2: EXPLORE -->
+                <div class="footer-col-links">
+                    <h4>EXPLORE</h4>
+                    <a href="/#home" target="_blank">Home</a>
+                    <a href="/#services" target="_blank">Services</a>
+                    <a href="/#gallery" target="_blank">Portfolio</a>
+                    <a href="/#pricing" target="_blank">Pricing</a>
+                    <a href="/#reviews" target="_blank">Reviews</a>
+                    <a href="about.html" target="_blank">About Us</a>
+                    <a href="/#contact" target="_blank">Contact Us</a>
+                </div>
+
+                <!-- Column 3: CONTACT US -->
+                <div class="footer-col-contact">
+                    <h4>CONTACT US</h4>
+                    
+                    <div class="contact-info-item">
+                        <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                        <div class="contact-text">
+                            <label>EMAIL</label>
+                            <a href="mailto:digitalstudiogunjan@gmail.com">digitalstudiogunjan@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <div class="contact-text">
+                            <label>OFFICE</label>
+                            <span>Maharaj Bada, Gwalior, Madhya Pradesh, India — 474001</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span class="contact-icon"><i class="fas fa-clock"></i></span>
+                        <div class="contact-text">
+                            <label>HOURS</label>
+                            <span>Mon — Sun - 10:00 AM — 9:00 PM</span>
+                            <span class="status-dot-open">● Open Now</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4: STAY UPDATED -->
+                <div class="footer-col-subscribe">
+                    <h4>STAY UPDATED</h4>
+                    <div class="subscribe-card">
+                        <h3>Sign Up for Offers</h3>
+                        <p>Seasonal wedding discounts, pre-wedding ideas, and exclusive shoot tips — straight to your inbox.</p>
+                        
+                        <form id="subscribeForm" class="subscribe-form-inner">
+                            <input type="email" id="subscribeEmail" placeholder="Your email address" required>
+                            <button type="submit">SUBSCRIBE FREE <i class="fas fa-arrow-right"></i></button>
+                        </form>
+                        
+                        <span class="subscribe-note">No spam, ever. Unsubscribe anytime.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="footer-bottom-bar">
+            <div class="container footer-bottom-wrap">
+                <div class="footer-copyright">
+                    &copy; 2026 Gunjan Digital Studio. All rights reserved.
+                </div>
+                <div class="footer-legal-links">
+                    <a href="#privacy-policy" target="_blank">Privacy Policy</a>
+                    <a href="#terms-of-service" target="_blank">Terms of Service</a>
+                    <a href="#sitemap" target="_blank">Sitemap</a>
+                </div>
+                <div class="footer-secure-pay">
+                    <span>SECURE PAY</span>
+                    <span class="pay-card-icon"><i class="fab fa-cc-visa"></i></span>
+                    <span class="pay-card-icon"><i class="fab fa-cc-mastercard"></i></span>
+                    <span class="pay-card-icon"><i class="fab fa-google-pay"></i></span>
+                    <button class="scroll-to-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">Top <i class="fas fa-arrow-up"></i></button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", () => {
+            if (navLinks.style.display === "flex") {
+                navLinks.style.display = "none";
+            } else {
+                Object.assign(navLinks.style, {
+                    display: "flex",
+                    flexDirection: "column",
+                    position: "absolute",
+                    top: "64px",
+                    right: "4%",
+                    background: "rgba(0,0,0,0.85)",
+                    border: "1px solid rgba(212,175,55,0.25)",
+                    padding: "14px",
+                    borderRadius: "18px",
+                    gap: "12px",
+                    backdropFilter: "blur(10px)"
+                });
+            }
+        });
+
+        // Newsletter subscription form handler
+        document.getElementById('subscribeForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('subscribeEmail').value;
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: 'Newsletter Subscriber',
+                        email: email,
+                        message: 'New subscription to newsletter!'
+                    })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert('Thank you for subscribing to our newsletter! ✉️');
+                    document.getElementById('subscribeForm').reset();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Server connection error. Please try again.');
+            }
+        });
+    </script>
+</body>
+
+</html>

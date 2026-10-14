@@ -1,0 +1,14 @@
+{
+  "name": "gunjan-digital-studio-root",
+  "version": "1.0.0",
+  "description": "Root proxy package for Gunjan Digital Studio",
+  "scripts": {
+    "frontend": "npx serve -s frontend -l 3001",
+    "postinstall": "npm install --prefix backend",
+    "start": "npm start --prefix backend",
+    "dev": "npm run dev --prefix backend"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}

@@ -1,0 +1,9 @@
+Create Account
+[0] (500,357)<input id='username' placeholder='Username' />
+[1] (500,434)<input id='phone' placeholder='Phone Number' />
+[2] (500,512)<input id='email' placeholder='Email Address' />
+[3] (500,589)<input id='password' placeholder='Password' />
+[4] (500,666)<button id='submitBtn'>Register />
+[5] (500,721)<a class='toggle-link' id='toggleMode'>Already have an account? Login />
+[6] (500,752)<a class='toggle-link' href='/'>← Back to
+            Home />

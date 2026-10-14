@@ -1,0 +1,22 @@
+# Installed dependencies
+node_modules/
+.cache/
+
+# Private local configuration
+.env
+.env.*
+!.env.example
+
+# Runtime uploads
+/backend/uploads/*
+!/backend/uploads/.gitkeep
+
+# Generated logs
+*.log
+npm-debug.log*
+
+# Archive and operating-system metadata
+.DS_Store
+._*
+__MACOSX/
+Thumbs.db
