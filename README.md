@@ -2,6 +2,10 @@
 
 This project uses an Express backend and a static HTML, CSS, and JavaScript frontend. The backend serves both the website and its API.
 
+## Deploy the frontend on Render
+
+The root `render.yaml` configures a Render Static Site that publishes only `frontend/`, skips dependency installation, and preserves the UI files. Follow [the static deployment guide](docs/render-static.md) for Blueprint or manual setup. A separate backend is still needed for `/api/...` features; do not put database credentials in the static site's environment variables.
+
 ## Run locally
 
 Open a terminal in the project root, where this README and `package.json` are located:

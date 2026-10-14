@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: peeyush-frontend
+    runtime: static
+    branch: main
+    buildCommand: 'test -f frontend/index.html'
+    staticPublishPath: ./frontend
+    envVars:
+      - key: SKIP_INSTALL_DEPS
+        value: "true"
