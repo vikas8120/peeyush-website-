@@ -9,7 +9,7 @@ The frontend is plain HTML, CSS, and JavaScript. It can be published directly wi
 3. Use the `main` branch and the root `render.yaml` file.
 4. Review and deploy the `peeyush-frontend` static site.
 
-The Blueprint publishes only `frontend/`. Backend source, configuration, credentials, and local caches are outside the published directory.
+The Blueprint uses `frontend/` as its root directory and publishes that directory directly. It contains no package manifest, so the backend install scripts are outside the static build root. Backend source, configuration, credentials, and local caches are outside the published directory.
 
 ## Deploy using the Static Site form
 
@@ -19,12 +19,14 @@ Use these equivalent settings if you are already on the manual creation form:
 |---|---|
 | Service type | Static Site |
 | Branch | main |
-| Root Directory | Leave empty |
-| Build Command | `test -f frontend/index.html` |
-| Publish Directory | `frontend` |
+| Root Directory | `frontend` |
+| Build Command | `test -f index.html` |
+| Publish Directory | `.` |
 | Environment variable | `SKIP_INSTALL_DEPS=true` |
 
-The build command verifies that the homepage exists. `SKIP_INSTALL_DEPS` prevents Render from installing the root package's backend dependencies for this frontend-only deployment.
+The build command verifies that the homepage exists relative to the frontend root. `SKIP_INSTALL_DEPS` also explicitly disables automatic dependency installation.
+
+For an existing manually created Static Site, update these fields in Render Settings and save the environment variable under Environment. Pushing `render.yaml` does not automatically change a manually configured service. Cancel an old in-progress deployment, then deploy the latest commit after saving the new settings.
 
 Do not add `MONGO_URI`, `JWT_SECRET`, or other backend credentials to this static site.
 
